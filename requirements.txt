@@ -1,0 +1,40 @@
+# MMSplice/MTSplice Requirements
+# Tested on Python 3.10, Ubuntu/Debian
+#
+# IMPORTANT: Install in this order to avoid dependency conflicts:
+# 1. Install system dependencies first (see INSTALL.md)
+# 2. pip install numpy==1.23.5
+# 3. pip install tensorflow==2.13.1
+# 4. pip install -r requirements.txt
+
+# Core dependencies with compatible versions
+numpy==1.23.5
+tensorflow==2.13.1
+
+# MMSplice and dependencies
+mmsplice==2.4.0
+kipoiseq==0.7.1
+
+# VCF parsing (requires numpy 1.23.5 for binary compatibility)
+cyvcf2==0.30.15
+
+# Data manipulation
+pandas>=1.5.0,<2.0.0
+pysam>=0.20.0
+
+# API dependencies (optional - only needed for Modal deployment)
+fastapi[standard]==0.115.0
+python-multipart
+pydantic==2.8.2
+pyyaml==6.0.1
+requests
+
+# Scientific computing
+scikit-learn>=1.0.0,<2.0.0
+scipy>=1.9.0,<2.0.0
+
+# Jupyter support (optional)
+jupyter
+ipython
+matplotlib
+seaborn
