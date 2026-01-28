@@ -1,0 +1,77 @@
+# ASO VCF Configuration Template
+# Use this template to define your ASO designs for MMSplice prediction
+
+genome_version: GRCh38
+
+targets:
+  # Example 1: Donor site targeting ASO for exon skipping
+  - chrom: chrX                    # Chromosome (include 'chr' prefix)
+    pos: 31791719                  # Genomic position (1-based)
+    id: ASO_DMD_Ex51_Donor_v1     # Unique variant ID
+    ref: G                         # Reference allele at this position
+    alt: A                         # Alternative allele (proxy for ASO effect)
+    info:                          # Additional INFO fields
+      ASO_NAME: DMD_Ex51_Donor_v1
+      TARGET_TYPE: donor_site      # donor_site, acceptor_site, ESE, ISS, etc.
+      GENE: DMD
+      EXON: "51"
+      ASO_SEQ: ACTTGAGTCAGGGTACTTG # ASO sequence (5' to 3')
+      ASO_LENGTH: 19
+      DESIGN_GOAL: skip_exon       # skip_exon or include_exon
+      CHEMISTRY: 2MOE               # 2MOE, PMO, PNA, etc.
+
+  # Example 2: Acceptor site targeting ASO
+  - chrom: chrX
+    pos: 31791568
+    id: ASO_DMD_Ex51_Acceptor_v1
+    ref: A
+    alt: T
+    info:
+      ASO_NAME: DMD_Ex51_Acc_v1
+      TARGET_TYPE: acceptor_site
+      GENE: DMD
+      EXON: "51"
+      ASO_SEQ: CTTAGGCTAGCAGATCTTG
+      ASO_LENGTH: 19
+      DESIGN_GOAL: skip_exon
+      CHEMISTRY: 2MOE
+
+  # Example 3: ESE blocker for exon skipping
+  - chrom: chrX
+    pos: 31791605
+    id: ASO_DMD_Ex51_ESE_v1
+    ref: G
+    alt: C
+    info:
+      ASO_NAME: DMD_Ex51_ESE_v1
+      TARGET_TYPE: ESE_blocker
+      GENE: DMD
+      EXON: "51"
+      ASO_SEQ: GTCTTCTTCAGGCTAAGGA
+      ASO_LENGTH: 19
+      DESIGN_GOAL: skip_exon
+      CHEMISTRY: 2MOE
+
+  # Example 4: ISS blocker for exon inclusion (SMA-like)
+  - chrom: chr5
+    pos: 70247778
+    id: ASO_SMN2_Ex7_ISS_N1
+    ref: C
+    alt: G
+    info:
+      ASO_NAME: Nusinersen_like
+      TARGET_TYPE: ISS_blocker
+      GENE: SMN2
+      EXON: "7"
+      ASO_SEQ: ATGCTGGATTCACTTTCATA
+      ASO_LENGTH: 20
+      DESIGN_GOAL: include_exon
+      CHEMISTRY: 2MOE
+
+# Notes:
+# 1. Each target represents one ASO design as a VCF variant
+# 2. The REF/ALT bases are proxies to approximate ASO blocking effect
+# 3. For donor sites: typically disrupt GT consensus (G→A or T→C)
+# 4. For acceptor sites: typically disrupt AG consensus (A→T or G→C)
+# 5. For ESE/ISS blockers: SNP in the middle of the motif
+# 6. All positions are 1-based genomic coordinates

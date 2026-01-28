@@ -1,0 +1,7 @@
+{
+  "vcf_content": "##fileformat=VCFv4.2\n##fileDate=20260127\n##source=ASO_Design_Pipeline\n##reference=GRCh38\n##INFO=<ID=ASO_NAME,Number=1,Type=String,Description=\"ASO identifier\">\n##INFO=<ID=TARGET_TYPE,Number=1,Type=String,Description=\"Splice site target type\">\n##INFO=<ID=DESIGN_GOAL,Number=1,Type=String,Description=\"Therapeutic goal\">\n##INFO=<ID=GENE,Number=1,Type=String,Description=\"Target gene\">\n##INFO=<ID=EXON,Number=1,Type=String,Description=\"Target exon\">\n##contig=<ID=X,length=156040895>\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\nX\t31791718\tASO_DMD_Ex51_Donor_v1\tG\tA\t.\tPASS\tASO_NAME=Eteplirsen_v1;TARGET_TYPE=donor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51\nX\t31791719\tASO_DMD_Ex51_Donor_v2\tT\tC\t.\tPASS\tASO_NAME=Eteplirsen_v2;TARGET_TYPE=donor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51\nX\t31791720\tASO_DMD_Ex51_Donor_v3\tG\tT\t.\tPASS\tASO_NAME=Eteplirsen_v3;TARGET_TYPE=donor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51\nX\t31791625\tASO_DMD_Ex51_Acceptor_v1\tA\tG\t.\tPASS\tASO_NAME=Eteplirsen_Acc_v1;TARGET_TYPE=acceptor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51\nX\t31791626\tASO_DMD_Ex51_Acceptor_v2\tC\tT\t.\tPASS\tASO_NAME=Eteplirsen_Acc_v2;TARGET_TYPE=acceptor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51\nX\t31791500\tASO_DMD_Ex51_ESE_v1\tC\tG\t.\tPASS\tASO_NAME=ESE_Blocker_v1;TARGET_TYPE=ESE_motif;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51\n",
+  "genome": "GRCh38",
+  "pathogenicity": true,
+  "splicing_efficiency": true,
+  "tissue_specific": false
+}

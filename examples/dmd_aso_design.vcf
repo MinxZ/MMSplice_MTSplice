@@ -1,0 +1,17 @@
+##fileformat=VCFv4.2
+##fileDate=20260127
+##source=ASO_Design_Pipeline
+##reference=GRCh38
+##INFO=<ID=ASO_NAME,Number=1,Type=String,Description="ASO identifier">
+##INFO=<ID=TARGET_TYPE,Number=1,Type=String,Description="Splice site target type">
+##INFO=<ID=DESIGN_GOAL,Number=1,Type=String,Description="Therapeutic goal">
+##INFO=<ID=GENE,Number=1,Type=String,Description="Target gene">
+##INFO=<ID=EXON,Number=1,Type=String,Description="Target exon">
+##contig=<ID=X,length=156040895>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+X	31791718	ASO_DMD_Ex51_Donor_v1	G	A	.	PASS	ASO_NAME=Eteplirsen_v1;TARGET_TYPE=donor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51
+X	31791719	ASO_DMD_Ex51_Donor_v2	T	C	.	PASS	ASO_NAME=Eteplirsen_v2;TARGET_TYPE=donor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51
+X	31791720	ASO_DMD_Ex51_Donor_v3	G	T	.	PASS	ASO_NAME=Eteplirsen_v3;TARGET_TYPE=donor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51
+X	31791625	ASO_DMD_Ex51_Acceptor_v1	A	G	.	PASS	ASO_NAME=Eteplirsen_Acc_v1;TARGET_TYPE=acceptor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51
+X	31791626	ASO_DMD_Ex51_Acceptor_v2	C	T	.	PASS	ASO_NAME=Eteplirsen_Acc_v2;TARGET_TYPE=acceptor_site;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51
+X	31791500	ASO_DMD_Ex51_ESE_v1	C	G	.	PASS	ASO_NAME=ESE_Blocker_v1;TARGET_TYPE=ESE_motif;DESIGN_GOAL=exon_51_skipping;GENE=DMD;EXON=51

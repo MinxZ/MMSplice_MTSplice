@@ -1,0 +1,11 @@
+# Requirements for Modal deployment and testing
+
+# Modal SDK
+modal>=0.63.0
+
+# For test client
+requests>=2.31.0
+pandas>=2.0.0
+
+# For custom genome config (v2)
+pyyaml>=6.0.0
