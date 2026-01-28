@@ -32,8 +32,14 @@ conda install -c conda-forge numpy=1.23.5 -y
 # Install scientific packages
 conda install -c conda-forge pandas scipy scikit-learn pysam -y
 
+# Install build dependencies
+pip install setuptools wheel Cython "setuptools-scm>=6.2"
+
 # Install TensorFlow via pip
 pip install tensorflow==2.13.1
+
+# Install sorted_nearest separately (fixes build issues)
+pip install sorted_nearest --no-build-isolation || pip install sorted_nearest==0.0.33
 
 # Install MMSplice
 pip install mmsplice==2.4.0
@@ -99,6 +105,22 @@ python test_installation.py
 ```
 
 ## Troubleshooting
+
+### Automatic Fix (Recommended)
+```bash
+conda activate mmsplice
+bash fix_installation.sh
+```
+
+### Error: `sorted_nearest` build fails
+**Symptoms:** `Building wheel for sorted_nearest (pyproject.toml) ... error`
+
+**Fix:**
+```bash
+pip install setuptools wheel Cython "setuptools-scm>=6.2"
+pip install sorted_nearest --no-build-isolation || pip install sorted_nearest==0.0.33
+pip install mmsplice==2.4.0
+```
 
 ### Error: `numpy.dtype size changed`
 **Fix:**

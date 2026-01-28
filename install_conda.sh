@@ -64,15 +64,27 @@ echo ""
 echo "Step 5/7: Installing scientific packages..."
 conda install -c conda-forge pandas scipy scikit-learn pysam matplotlib seaborn -y
 
+# Install build dependencies
+echo ""
+echo "Step 6/8: Installing build dependencies..."
+pip install setuptools wheel Cython
+pip install "setuptools-scm>=6.2"
+
 # Install TensorFlow and MMSplice via pip
 echo ""
-echo "Step 6/7: Installing TensorFlow and MMSplice..."
+echo "Step 7/8: Installing TensorFlow and MMSplice..."
 pip install tensorflow==2.13.1
+
+# Install sorted_nearest separately (fixes build issues)
+echo "Installing sorted_nearest (MMSplice dependency)..."
+pip install sorted_nearest --no-build-isolation || pip install sorted_nearest==0.0.33
+
+# Install MMSplice
 pip install mmsplice==2.4.0
 
 # Force correct versions
 echo ""
-echo "Step 7/7: Forcing correct package versions (critical for compatibility)..."
+echo "Step 8/8: Forcing correct package versions (critical for compatibility)..."
 pip install tensorflow==2.13.1 --force-reinstall
 pip install numpy==1.23.5 --force-reinstall --no-deps
 

@@ -172,9 +172,11 @@ python test_local_prediction.py path/to/your.vcf output.json
 | Script | Purpose | Usage |
 |--------|---------|-------|
 | `install_conda.sh` | Install conda environment | `bash install_conda.sh` |
+| `fix_installation.sh` | Fix installation issues | `bash fix_installation.sh` |
 | `download_references.sh` | Download genome files | `bash download_references.sh GRCh38` |
 | `test_installation.py` | Verify installation | `python test_installation.py` |
 | `test_local_prediction.py` | Run predictions | `python test_local_prediction.py [vcf] [output]` |
+| `run_complete_test.sh` | Complete test suite | `bash run_complete_test.sh` |
 | `test_modal_api.py` | Test Modal API | `python examples/test_modal_api.py` |
 
 ## 💡 Common Workflows
@@ -237,6 +239,34 @@ conda env remove -n mmsplice
 ```
 
 ## 🐛 Troubleshooting
+
+### Quick Fix: Use the fix script
+
+If you encounter any installation issues:
+
+```bash
+conda activate mmsplice
+bash fix_installation.sh
+```
+
+This script will:
+- Diagnose all common installation issues
+- Automatically fix package version conflicts
+- Verify the installation works
+
+### Issue: `sorted_nearest` build fails
+
+**Symptoms:**
+```
+Building wheel for sorted_nearest (pyproject.toml) ... error
+```
+
+**Quick Fix:**
+```bash
+pip install setuptools wheel Cython "setuptools-scm>=6.2"
+pip install sorted_nearest --no-build-isolation || pip install sorted_nearest==0.0.33
+pip install mmsplice==2.4.0
+```
 
 ### Issue: Installation test fails
 

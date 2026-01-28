@@ -64,23 +64,29 @@ conda install -c conda-forge numpy=1.23.5 -y
 # Step 2: Install other scientific packages via conda
 conda install -c conda-forge pandas scipy scikit-learn matplotlib seaborn pysam -y
 
-# Step 3: Install TensorFlow 2.13.1 via pip (compatible with numpy 1.23.5)
+# Step 3: Install build dependencies (fixes sorted_nearest build issues)
+pip install setuptools wheel Cython "setuptools-scm>=6.2"
+
+# Step 4: Install TensorFlow 2.13.1 via pip (compatible with numpy 1.23.5)
 pip install tensorflow==2.13.1
 
-# Step 4: Install MMSplice (may try to upgrade tensorflow, we'll fix this next)
+# Step 5: Install sorted_nearest separately (MMSplice dependency with known build issues)
+pip install sorted_nearest --no-build-isolation || pip install sorted_nearest==0.0.33
+
+# Step 6: Install MMSplice (may try to upgrade tensorflow, we'll fix this next)
 pip install mmsplice==2.4.0
 
-# Step 5: Force downgrade back to compatible versions
+# Step 7: Force downgrade back to compatible versions
 pip install tensorflow==2.13.1 --force-reinstall
 pip install numpy==1.23.5 --force-reinstall --no-deps
 
-# Step 6: Install remaining dependencies
+# Step 8: Install remaining dependencies
 pip install cyvcf2==0.30.15 kipoiseq==0.7.1
 
-# Step 7: Install API dependencies (optional - only if using Modal/FastAPI)
+# Step 9: Install API dependencies (optional - only if using Modal/FastAPI)
 pip install fastapi[standard]==0.115.0 python-multipart pydantic==2.8.2 pyyaml==6.0.1 requests
 
-# Step 8: Install Jupyter (optional)
+# Step 10: Install Jupyter (optional)
 conda install -c conda-forge jupyter ipython -y
 ```
 
@@ -190,6 +196,35 @@ EOF
 ```
 
 ## Troubleshooting
+
+### Issue: `sorted_nearest` build fails during installation
+
+**Symptoms:**
+```
+Building wheel for sorted_nearest (pyproject.toml) ... error
+toml section missing PosixPath('pyproject.toml') does not contain a tool.setuptools_scm section
+```
+
+**Cause:** Build tool incompatibility with newer setuptools versions
+
+**Fix Option 1** (install build dependencies first):
+```bash
+pip install setuptools wheel Cython "setuptools-scm>=6.2"
+pip install sorted_nearest --no-build-isolation
+pip install mmsplice==2.4.0
+```
+
+**Fix Option 2** (use specific version):
+```bash
+pip install sorted_nearest==0.0.33
+pip install mmsplice==2.4.0
+```
+
+**Fix Option 3** (skip problematic build):
+```bash
+pip install mmsplice==2.4.0 --no-deps
+pip install tensorflow==2.13.1 kipoiseq pandas pysam cyvcf2
+```
 
 ### Issue: `numpy.dtype size changed` error
 
